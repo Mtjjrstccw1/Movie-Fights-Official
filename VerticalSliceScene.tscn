@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ulsu3ouftwr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vte62"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1.19584, 0, 0, 0, 1.19584, 0, 0, 0, 1.19584, 0, 0, 0)
+shape = SubResource("SphereShape3D_vte62")
