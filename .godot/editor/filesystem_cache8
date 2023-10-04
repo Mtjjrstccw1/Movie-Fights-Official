@@ -1,6 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1696457699
-icon.svg::CompressedTexture2D::4954645046398747214::1696457672::1696457699::1::::<><>::
-MainMenu.tscn::PackedScene::440047917129319814::1696457672::0::1::::<><>::
-Menu.tscn::PackedScene::5336301901338505763::1696457672::0::1::::<><>::
-VerticalSliceScene.tscn::PackedScene::6780117669927592049::1696457672::0::1::::<><>::
+::res://::1696458545
+ApeChamp.tscn::PackedScene::8098443317054930734::1696458472::0::1::::<><>::
+icon.svg::CompressedTexture2D::4954645046398747214::1696454947::1696458545::1::::<><>::
+LizarDiety.tscn::PackedScene::2656372622542249815::1696458472::0::1::::<><>::
+MainMenu.tscn::PackedScene::440047917129319814::1696455041::0::1::::<><>::
+Menu.tscn::PackedScene::5336301901338505763::1696455008::0::1::::<><>::
+VerticalSliceScene.tscn::PackedScene::6780117669927592049::1696455461::0::1::::<><>::
