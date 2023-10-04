@@ -2,18 +2,17 @@
 
 [ext_resource type="ArrayMesh" uid="uid://5ghbktx433oq" path="res://addons/kaykit_city_builder_bits/Assets/obj/base.obj" id="1_j657i"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oy75n"]
-size = Vector3(17.6871, 1, 18.1553)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlwr7"]
+size = Vector3(18.155, 0.165, 18.8)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Base" type="MeshInstance3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="Base" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(9.12638, 0, 0, 0, 1, 0, 0, 0, 9.55328, 0, 0, 0)
 mesh = ExtResource("1_j657i")
+skeleton = NodePath("../..")
 
-[node name="Area3D" type="Area3D" parent="Base"]
-transform = Transform3D(0.109572, 0, 0, 0, 1, 0, 0, 0, 0.104676, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 0.215652, 0, 0, 0, 1.07109, 0, 0, 0)
-shape = SubResource("BoxShape3D_oy75n")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_dlwr7")
