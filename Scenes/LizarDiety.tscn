@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd31cl0w80oyx"]
+
+[ext_resource type="Script" path="res://Scripts/States/StateLizarDiety.gd" id="1_wqc0x"]
+[ext_resource type="Script" path="res://Scripts/Characters/LizarDeityScript.gd" id="2_x15ma"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qv0u2"]
+
+[node name="LizarDiety" type="Node3D"]
+
+[node name="StateMachine" type="Node3D" parent="."]
+script = ExtResource("1_wqc0x")
+
+[node name="LizarDietyBody" type="CharacterBody3D" parent="."]
+script = ExtResource("2_x15ma")
+
+[node name="CollisionBox" type="CollisionShape3D" parent="LizarDietyBody"]
+shape = SubResource("CylinderShape3D_qv0u2")
+
+[node name="Raycasts" type="Node3D" parent="."]
+
+[node name="GroundL" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.965109, 0.471449)
+
+[node name="GroundR" type="RayCast3D" parent="Raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.977742, -0.543514)
