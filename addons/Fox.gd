@@ -1,6 +1,5 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-var velocity = Vector2(0,0)
 var dash_duration = 10
 
 var RUNSPEED = 340
@@ -20,7 +19,7 @@ var ROLL_DISTANCE = 350
 var air_dodge_speed = 500
 var UP_B_LAUNCHSPEED = 700
 
-onready var states = $State
+@onready var states = $State
 
 var frame = 0
 func updateframes(delta):
@@ -34,7 +33,7 @@ func turn(direction):
 		dir = 1
 	$Sprite.set_flip_h(direction)
 
-func frame():
+func frames():
 	frame = 0
 
 

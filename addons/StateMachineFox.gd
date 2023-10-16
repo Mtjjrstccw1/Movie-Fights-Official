@@ -1,5 +1,5 @@
 extends StateMachine
-export(int) var id = 1
+var id = 1
 
 func _ready():
 	add_state('STAND')

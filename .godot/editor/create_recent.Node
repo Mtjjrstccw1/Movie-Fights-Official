@@ -1,5 +1,10 @@
-RayCast3D
+CharacterBody2D
+Node2D
+RayCast2D
+CollisionShape2D
+Area2D
 Node3D
+CharacterBody3D
+RayCast3D
 CollisionShape3D
 Area3D
-CharacterBody3D
