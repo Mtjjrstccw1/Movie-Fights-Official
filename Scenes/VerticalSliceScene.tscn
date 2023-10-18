@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3ulsu3ouftwr"]
+[gd_scene load_steps=4 format=3 uid="uid://c3ulsu3ouftwr"]
 
 [ext_resource type="PackedScene" uid="uid://bd31cl0w80oyx" path="res://Scenes/LizarDiety.tscn" id="2_2d4fs"]
+[ext_resource type="PackedScene" uid="uid://10bqceof4c7e" path="res://addons/ApeChamp.tscn" id="2_kph1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_737sy"]
 size = Vector2(228, 20)
@@ -17,3 +18,6 @@ shape = SubResource("RectangleShape2D_737sy")
 
 [node name="LizarDiety" parent="." instance=ExtResource("2_2d4fs")]
 position = Vector2(12, -10)
+
+[node name="ApeChamp" parent="." instance=ExtResource("2_kph1f")]
+position = Vector2(112.894, -10.566)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/States/StateLizarDiety.gd" id="1_wqc0x"]
 [ext_resource type="Script" path="res://Scripts/Characters/LizarDeityScript.gd" id="2_x15ma"]
-[ext_resource type="Texture2D" uid="uid://cvgf57xaduw6m" path="res://addons/442133789523574785.png" id="3_dtiwy"]
+[ext_resource type="Texture2D" uid="uid://cvgf57xaduw6m" path="res://Sprites/442133789523574785.png" id="3_3e4wf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oqiuo"]
 
@@ -24,6 +24,6 @@ position = Vector2(0, -0.965109)
 position = Vector2(0, -0.977742)
 
 [node name="442133789523574785" type="Sprite2D" parent="."]
-position = Vector2(-2.84217e-14, 2.84217e-14)
-scale = Vector2(0.152381, 0.140625)
-texture = ExtResource("3_dtiwy")
+position = Vector2(0.375, -0.5)
+scale = Vector2(0.178571, 0.148438)
+texture = ExtResource("3_3e4wf")
