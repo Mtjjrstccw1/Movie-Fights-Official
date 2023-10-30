@@ -16,8 +16,19 @@ scale = Vector2(10.16, 10.6)
 position = Vector2(55, 10)
 shape = SubResource("RectangleShape2D_737sy")
 
+[node name="Panel" type="Panel" parent="Area2D/CollisionShape2D"]
+offset_left = -114.154
+offset_top = -9.90566
+offset_right = -74.1535
+offset_bottom = 30.0943
+scale = Vector2(5.70472, 0.498113)
+
 [node name="LizarDiety" parent="." instance=ExtResource("2_2d4fs")]
 position = Vector2(12, -10)
 
 [node name="ApeChamp" parent="." instance=ExtResource("2_kph1f")]
 position = Vector2(112.894, -10.566)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(55.1181, -18.6792)
+zoom = Vector2(0.505, 0.505)
