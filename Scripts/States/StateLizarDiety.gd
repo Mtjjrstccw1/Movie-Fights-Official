@@ -4,6 +4,9 @@ extends StateMachine
 func _ready():
 	add_state("IDLE")
 	add_state("JUMP")
+	add_state("UP")
+	add_state("DOWN")
+	add_state("FALLING")
 	add_state("WALK")
 	add_state("RUN")
 	add_state("CROUCH")
@@ -27,14 +30,24 @@ func get_transition(delta):
 	
 	match state:
 		states.IDLE:
+			if Input.get_action_strength("up_1") == 1:
+				parent.velocity.y = -parent.RUNSPEED
+				return states.UP
+			
+			if Input.get_action_strength("down_1") == 1:
+				parent.velocity.y = parent.RUNSPEED
+				return states.DOWN
+				
 			if Input.get_action_strength("right_1") == 1:
 				parent.velocity.x = parent.RUNSPEED
 				parent.turn(false)
 				return states.RUN
+				
 			if Input.get_action_strength("left_1") == 1:
 				parent.velocity.x = -parent.RUNSPEED
 				parent.turn(true)
 				return states.RUN
+				
 			if parent.velocity.x > 0 and state == states.IDLE:
 				parent.velocity.x += -parent.TRACTION*1
 				parent.velocity.x = clampf(parent.velocity.x,0,parent.velocity.x)
@@ -42,8 +55,29 @@ func get_transition(delta):
 				parent.velocity.x += parent.TRACTION*1
 				parent.velocity.x = clampf(parent.velocity.x,parent.velocity.x,0)
 				
-		states.JUMP:
-			pass
+			if parent.velocity.y > 0 and state == states.IDLE:
+				parent.velocity.y += -parent.TRACTION*1
+				parent.velocity.y = clampf(parent.velocity.y,0,parent.velocity.y)
+			elif parent.velocity.y < 0 and state == states.IDLE:
+				parent.velocity.y += parent.TRACTION*1
+				parent.velocity.y = clampf(parent.velocity.y,parent.velocity.y,0)
+				
+		states.UP:
+			if Input.get_action_strength("jump_1"):
+				if parent.velocity.y >= 0:
+					parent.velocity.y = -parent.RUNSPEED
+			else:
+				parent.velocity.y = 0
+				return states.IDLE
+
+		states.DOWN:
+			if Input.get_action_strength("jump_1"):
+				if parent.velocity.y <= 0:
+					parent.velocity.y = parent.RUNSPEED
+			else:
+				parent.velocity.y = 0
+				return states.IDLE
+			
 		states.WALK:
 			pass
 		states.RUN:
@@ -58,7 +92,7 @@ func get_transition(delta):
 					parent.turn(false)
 			else:
 				return states.IDLE
-			pass
+				
 		states.CROUCH:
 			pass
 		states.HIGHBLOCK:

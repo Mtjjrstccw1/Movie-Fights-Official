@@ -4,6 +4,9 @@ extends StateMachine
 func _ready():
 	add_state("IDLE")
 	add_state("JUMP")
+	add_state("UP")
+	add_state("DOWN")
+	add_state("FALLING")
 	add_state("WALK")
 	add_state("RUN")
 	add_state("CROUCH")
@@ -27,6 +30,14 @@ func get_transition(delta):
 	
 	match state:
 		states.IDLE:
+			if Input.get_action_strength("r_up_1") == 1:
+				parent.velocity.y = -parent.RUNSPEED
+				return states.UP
+			
+			if Input.get_action_strength("r_down_1") == 1:
+				parent.velocity.y = parent.RUNSPEED
+				return states.DOWN
+				
 			if Input.get_action_strength("r_right_1") == 1:
 				parent.velocity.x = parent.RUNSPEED
 				parent.turn(false)
@@ -41,6 +52,22 @@ func get_transition(delta):
 			elif parent.velocity.x < 0 and state == states.IDLE:
 				parent.velocity.x += parent.TRACTION*1
 				parent.velocity.x = clampf(parent.velocity.x,parent.velocity.x,0)
+				
+		states.UP:
+			if Input.get_action_strength("jump_1"):
+				if parent.velocity.y >= 0:
+					parent.velocity.y = -parent.RUNSPEED
+			else:
+				parent.velocity.y = 0
+				return states.IDLE
+
+		states.DOWN:
+			if Input.get_action_strength("jump_1"):
+				if parent.velocity.y <= 0:
+					parent.velocity.y = parent.RUNSPEED
+			else:
+				parent.velocity.y = 0
+				return states.IDLE
 				
 		states.JUMP:
 			pass
