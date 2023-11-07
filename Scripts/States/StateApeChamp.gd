@@ -104,7 +104,11 @@ func get_transition(delta):
 		
 	
 func enter_state(new_state, old_state):
-	pass
+	match new_state:
+		states.IDLE:
+			parent.play_animation('Ape_Idle')
+		states.RUN:
+			parent.play_animation('Ape_Walk')
 
 func exit_state(new_state, old_state):
 	pass

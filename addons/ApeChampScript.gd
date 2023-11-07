@@ -52,5 +52,5 @@ func _ready():
 	pass 
 
 func _physics_process(delta):
-	pass
+	$Frames.text = str(frame)
 

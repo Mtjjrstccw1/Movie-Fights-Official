@@ -13,6 +13,7 @@ var dash_duration = 10
 @onready var GroundR = get_node('Raycasts/GroundR')
 @onready var states = $State
 @onready var sprite = $Sprite2D
+@onready var anim = $AnimationPlayer
 
 #FOX's main attributes
 var RUNSPEED = 340 *2
@@ -42,10 +43,14 @@ func turn(direction):
 		dir = -1
 	else:
 		dir = 1
-	
+	$AnimatedSprite2D.set_flip_h(direction)
+	$"442134619131871244".set_flip_h(direction)
 	
 func frames():
 	frame = 0
+	
+func play_animation(animation_name):
+	anim.play(animation_name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
