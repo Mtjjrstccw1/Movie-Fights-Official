@@ -1,5 +1,6 @@
 extends StateMachine
 @onready var id = get_parent().id
+@onready var animTree : AnimationTree = $AnimationTree
 
 func _ready():
 	add_state("IDLE")
