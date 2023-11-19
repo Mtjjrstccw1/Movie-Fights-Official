@@ -1182,10 +1182,10 @@ shape = SubResource("RectangleShape2D_7v4md")
 [node name="Raycasts" type="Node2D" parent="."]
 
 [node name="GroundL" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -0.965109)
+position = Vector2(-1.99999, 0.0148907)
 
 [node name="GroundR" type="RayCast2D" parent="Raycasts"]
-position = Vector2(0, -0.977742)
+position = Vector2(-1.99999, 0.0022583)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.38419e-07, -4.06719)

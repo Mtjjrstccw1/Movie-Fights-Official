@@ -1,6 +1,6 @@
-AnimatedSprite2D
-AnimationPlayer
 AnimationTree
+AnimationPlayer
+AnimatedSprite2D
 Panel
 Camera2D
 RayCast2D
