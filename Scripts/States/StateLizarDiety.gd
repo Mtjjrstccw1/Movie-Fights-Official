@@ -1,5 +1,6 @@
 extends StateMachine
 @onready var id = get_parent().id
+@onready var animTree : AnimationTree = $AnimationTree
 
 func _ready():
 	add_state("IDLE")
@@ -110,7 +111,11 @@ func get_transition(delta):
 		
 	
 func enter_state(new_state, old_state):
-	pass
+	match new_state:
+		states.IDLE:
+			parent.play_animation('Lizard_Idle')
+		states.RUN:
+			parent.play_animation('Lizard_Walk')
 
 func exit_state(new_state, old_state):
 	pass
