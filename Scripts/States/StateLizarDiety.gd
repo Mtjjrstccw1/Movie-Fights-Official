@@ -5,8 +5,6 @@ extends StateMachine
 func _ready():
 	add_state("IDLE")
 	add_state("JUMP")
-	add_state("UP")
-	add_state("DOWN")
 	add_state("FALLING")
 	add_state("WALK")
 	add_state("RUN")
@@ -33,11 +31,11 @@ func get_transition(delta):
 		states.IDLE:
 			if Input.get_action_strength("up_1") == 1:
 				parent.velocity.y = -parent.RUNSPEED
-				return states.UP
+				return states.RUN
 			
 			if Input.get_action_strength("down_1") == 1:
 				parent.velocity.y = parent.RUNSPEED
-				return states.DOWN
+				return states.RUN
 				
 			if Input.get_action_strength("right_1") == 1:
 				parent.velocity.x = parent.RUNSPEED
@@ -62,22 +60,6 @@ func get_transition(delta):
 			elif parent.velocity.y < 0 and state == states.IDLE:
 				parent.velocity.y += parent.TRACTION*1
 				parent.velocity.y = clampf(parent.velocity.y,parent.velocity.y,0)
-				
-		states.UP:
-			if Input.get_action_strength("jump_1"):
-				if parent.velocity.y >= 0:
-					parent.velocity.y = -parent.RUNSPEED
-			else:
-				parent.velocity.y = 0
-				return states.IDLE
-
-		states.DOWN:
-			if Input.get_action_strength("jump_1"):
-				if parent.velocity.y <= 0:
-					parent.velocity.y = parent.RUNSPEED
-			else:
-				parent.velocity.y = 0
-				return states.IDLE
 			
 		states.WALK:
 			pass
@@ -91,9 +73,18 @@ func get_transition(delta):
 				if parent.velocity.x >= 0:
 					parent.velocity.x = parent.RUNSPEED
 					parent.turn(false)
+			
+			elif Input.get_action_strength("up_1"):
+				if parent.velocity.y >= 0:
+					parent.velocity.y = -parent.RUNSPEED			
+					
+			elif Input.get_action_strength("down_1"):
+				if parent.velocity.y <= 0:
+					parent.velocity.y = parent.RUNSPEED	
+						
 			else:
 				return states.IDLE
-				
+			pass	
 		states.CROUCH:
 			pass
 		states.HIGHBLOCK:
@@ -116,6 +107,7 @@ func enter_state(new_state, old_state):
 			parent.play_animation('Lizard_Idle')
 		states.RUN:
 			parent.play_animation('Lizard_Walk')
+
 
 func exit_state(new_state, old_state):
 	pass
