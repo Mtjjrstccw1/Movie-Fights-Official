@@ -59,3 +59,6 @@ func _ready():
 func _physics_process(delta):
 	pass
 
+func get_input():
+	var input_direction = Input.get_vector("r_left_1", "r_right_1", "r_up_1", "r_down_1")
+	velocity = input_direction * RUNSPEED

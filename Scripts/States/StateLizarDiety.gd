@@ -38,14 +38,16 @@ func get_transition(delta):
 				return states.RUN
 				
 			if Input.get_action_strength("right_1") == 1:
-				parent.velocity.x = parent.RUNSPEED
 				parent.turn(false)
 				return states.RUN
 				
 			if Input.get_action_strength("left_1") == 1:
-				parent.velocity.x = -parent.RUNSPEED
 				parent.turn(true)
 				return states.RUN
+				
+			else:
+				parent.left = false
+				parent.right = false
 				
 			if parent.velocity.x > 0 and state == states.IDLE:
 				parent.velocity.x += -parent.TRACTION*1
@@ -64,26 +66,8 @@ func get_transition(delta):
 		states.WALK:
 			pass
 		states.RUN:
-			if Input.get_action_strength("left_1"):
-				if parent.velocity.x <= 0:
-					parent.velocity.x = -parent.RUNSPEED
-					parent.turn(true)
-
-			elif Input.get_action_strength("right_1"):
-				if parent.velocity.x >= 0:
-					parent.velocity.x = parent.RUNSPEED
-					parent.turn(false)
-			
-			elif Input.get_action_strength("up_1"):
-				if parent.velocity.y >= 0:
-					parent.velocity.y = -parent.RUNSPEED			
-					
-			elif Input.get_action_strength("down_1"):
-				if parent.velocity.y <= 0:
-					parent.velocity.y = parent.RUNSPEED	
-						
-			else:
-				return states.IDLE
+			parent.get_input()
+			return states.IDLE
 			pass	
 		states.CROUCH:
 			pass

@@ -3,9 +3,14 @@ extends CharacterBody2D
 #Globals Variables
 var frame = 0
 @export var id: int
+@export var left: bool
+@export var right: bool
+@export var up: bool
+@export var down: bool
 
 #Ground Variables
 var dash_duration = 10
+var actions = []
 
 
 #Onready Variables
@@ -33,7 +38,6 @@ var ROLL_DISTANCE = 350 *2
 var air_dodge_speed = 500 *2
 var UP_B_LAUNCHSPEED = 700 *2
 
-
 func updateframes(delta):
 	frame += floor(delta *60)
 
@@ -45,8 +49,7 @@ func turn(direction):
 		dir = 1
 	$AnimatedSprite2D.set_flip_h(direction)
 	$"442133789523574785".set_flip_h(direction)
-	
-	
+		
 func frames():
 	frame = 0
 	
@@ -60,3 +63,7 @@ func _ready():
 func _physics_process(delta):
 	pass
 
+
+func get_input():
+	var input_direction = Input.get_vector("left_1", "right_1", "up_1", "down_1")
+	velocity = input_direction * RUNSPEED
